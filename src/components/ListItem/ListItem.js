@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 export default class listItem extends Component {
   constructor(props) {
@@ -9,9 +9,11 @@ export default class listItem extends Component {
 
   render() {
     return (
-      <View style={styles.listItem}>
-        <Text>{this.props.placeName}</Text>
-      </View>
+      <TouchableWithoutFeedback onPress={this.props.onItemPressed}>
+        <View style={styles.listItem}>
+          <Text>{this.props.placeName}</Text>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
