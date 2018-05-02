@@ -11,7 +11,7 @@ export default class PlaceList extends Component {
 
   render() {
     const placesOutput = this.props.placesArray.map((place, index) => (
-      <ListItem key={index} placeName={place} onItemPressed={() => {alert(`Item pressed`);}}></ListItem>
+      <ListItem key={index} placeName={place} onItemPressed={() => this.props.onItemDeleted(index)}></ListItem>
     ));
     return (
       <View style={styles.listContainer}>

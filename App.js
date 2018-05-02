@@ -17,11 +17,21 @@ export default class App extends React.Component {
     });
   }
 
+  placeDeletedHandler = (index) => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter((place, idx) => {
+          return idx !== index;
+        })
+      };
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <PlaceInput onPlaceAdded={this.placeAddedHandler} />
-        <PlaceList placesArray={this.state.places}/>
+        <PlaceList placesArray={this.state.places} onItemDeleted={this.placeDeletedHandler}/>
       </View>
     );
   }
