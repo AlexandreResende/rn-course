@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView } from 'react-native'
+import { StyleSheet, FlatList } from 'react-native'
 
 import ListItem from '../ListItem/ListItem';
 
@@ -10,13 +10,20 @@ export default class PlaceList extends Component {
   }
 
   render() {
-    const placesOutput = this.props.placesArray.map((place, index) => (
-      <ListItem key={index} placeName={place} onItemPressed={() => this.props.onItemDeleted(index)}></ListItem>
-    ));
     return (
-      <ScrollView style={styles.listContainer}>
-        {placesOutput}
-      </ScrollView>
+      <FlatList 
+        style={styles.listContainer} 
+        data={this.props.placesArray}
+        renderItem={(info) => {
+          console.log(info);
+          return (
+            <ListItem
+              placeName={info.item.value}
+              onItemPressed={() => this.props.onItemDeleted(info.item.key)} 
+            />
+          );
+        }} 
+      />
     );
   }
 }
