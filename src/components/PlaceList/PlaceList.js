@@ -18,7 +18,8 @@ export default class PlaceList extends Component {
           console.log(info);
           return (
             <ListItem
-              placeName={info.item.value}
+              placeName={info.item.name}
+              placeImage={info.item.image}
               onItemPressed={() => this.props.onItemDeleted(info.item.key)} 
             />
           );
